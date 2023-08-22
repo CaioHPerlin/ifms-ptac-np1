@@ -22,12 +22,13 @@ const usersDb = [
 ];
 
 const getUserAuthenticated = (user) => {
+    let userAuth = {};
     for(let i = 0; i < usersDb.length; i++){
         if(user.email == usersDb[i].email && user.password == usersDb[i].password){
-            console.log(usersDb[i]);
-            return usersDb[i];
+            userAuth = usersDb[i];
         }
     }
+    return userAuth;
 }
 
 const getUsers = () => usersDb
