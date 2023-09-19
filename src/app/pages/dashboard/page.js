@@ -15,7 +15,7 @@ export default async function Dashboard() {
             <Suspense fallback={<p>Loading...</p>}>
                 <UserList list={users}/>
             </Suspense>
-            <div className='flex justify-end'>
+            <div className='flex justify-end mt-5'>
                 {/*
                 <Button><Link href={'/pages/dashboard/register'}>Register</Link></Button>
     <Button><Link href={'/pages/dashboard/alter'}>Alter</Link></Button>*/}

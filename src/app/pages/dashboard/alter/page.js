@@ -24,7 +24,7 @@ export default function Alter(){
     }
 
     return (
-        <Block title={'Atualizar'}>
+        <Block title={'Alterar'}>
             <Form onSubmit={handleUpdate}>
                 <input
                 placeholder='Nome'
@@ -44,7 +44,7 @@ export default function Alter(){
                 onChange={(e) => {
                     setUser({ ...user, password: e.target.value });
                 }}/>
-                <div className='justify-self-end'>
+                <div className='justify-self-end mt-5'>
                   <Button type={'reset'} secondary={true}>Limpar</Button>
                   <Button>Alterar</Button>
                 </div>

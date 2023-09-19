@@ -45,7 +45,7 @@ export default function Login() {
             setUser({ ...user, password: e.target.value });
           }}
         ></input>
-        <div className='justify-self-end'>
+        <div className='justify-self-end mt-5'>
           <Button type={'reset'} secondary={true}>Limpar</Button>
           <Button>Entrar</Button>
         </div>

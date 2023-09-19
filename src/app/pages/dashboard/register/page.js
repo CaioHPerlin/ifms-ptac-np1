@@ -24,7 +24,7 @@ export default function Register(){
     }
 
     return (
-        <Block title={'Registre-se'}>
+        <Block title={'Registrar'}>
             <Form onSubmit={handleRegister}>
                 <input
                 placeholder='Nome'
@@ -44,7 +44,7 @@ export default function Register(){
                 onChange={(e) => {
                     setUser({ ...user, password: e.target.value });
                 }}/>
-                <div className='justify-self-end'>
+                <div className='justify-self-end mt-5'>
                   <Button type={'reset'} secondary={true}>Limpar</Button>
                   <Button>Registrar</Button>
                 </div>

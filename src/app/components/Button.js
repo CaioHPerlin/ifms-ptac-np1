@@ -2,10 +2,10 @@
 
 export default function Button({children, method, secondary, type}) {
 
-    let classes = "w-fit mt-4 px-5 ml-3 py-2 rounded-lg text-white border-slate-400 border-4 bg-slate-400"
+    let classes = "shadow-md w-fit px-5 ml-3 py-2 font-medium  rounded-xl text-white border-slate-400 border-2 bg-slate-400"
 
     if(secondary){
-        classes = "w-fit mt-4 px-5 ml-3 py-2 rounded-lg text-slate-400 border-slate-400 border-4 bg-white"
+        classes = "shadow-md w-fit px-5 ml-3 py-2 font-medium rounded-xl text-w text-slate-400 border-slate-400 border-2 bg-white"
     }
 
     return(
