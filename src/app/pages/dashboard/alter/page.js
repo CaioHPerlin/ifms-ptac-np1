@@ -16,9 +16,8 @@ export default function Alter(){
             console.log('a')
             return toast.error('Há campos não preenchidos!');
         }
-
+        
         toast.success('Usuário atualizado!')
-
     }
 
     return (

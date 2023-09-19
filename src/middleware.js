@@ -2,6 +2,8 @@
 import { NextResponse } from "next/server";
 import { validateToken } from "./app/functions/validateToken";
 
+const restrictURLs = ['/pages/dashboard', '/pages/dashboard/register', '/pages/dashboard/alter']
+
 export const middleware = (request) => {
 
     const token = request.cookies.get('token')?.value;
@@ -10,7 +12,7 @@ export const middleware = (request) => {
     const isTokenValidated = validateToken(token);
 
     if (!isTokenValidated || !token) {
-        if (request.nextUrl.pathname === '/pages/dashboard') {
+        if (restrictURLs.includes(request.nextUrl.pathname)) {
             return NextResponse.redirect(urlLogin);
         }
     }else{
@@ -20,6 +22,7 @@ export const middleware = (request) => {
     }
     NextResponse.next();
 };
+
 export const config = {
-    matcher: ['/', '/pages/dashboard']
+    matcher: [...restrictURLs, '/']
 };
