@@ -36,6 +36,6 @@ const getUserAuthenticated = (user) => {
     return userAuth;
 }
 
-const getUsers = () => usersDb
+const getUsers = () => usersDb;
 
 export { getUsers, getUserAuthenticated };

@@ -1,5 +1,7 @@
 'use client';
 import { useState } from "react"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Alter(){
     const [user, setUser] = useState({
@@ -10,6 +12,13 @@ export default function Alter(){
 
     const handleUpdate = (e) => {
         e.preventDefault();
+        if(user.name == '' || user.email == '' || user.password == ''){
+            console.log('a')
+            return toast.error('Há campos não preenchidos!');
+        }
+
+        toast.success('Usuário atualizado!')
+
     }
 
     return (
@@ -36,6 +45,7 @@ export default function Alter(){
                 }}/>
                 <button>Alterar</button>
             </form>
+            <ToastContainer/>
         </main>
     )
 }
