@@ -1,4 +1,7 @@
 'use client';
+import Block from '@/app/components/Block';
+import Button from '@/app/components/Button';
+import Form from '@/app/components/Form';
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,11 +24,10 @@ export default function Alter(){
     }
 
     return (
-        <main>
-            <h1>Atualize o Registro</h1>
-            <form onSubmit={handleUpdate}>
+        <Block title={'Atualizar'}>
+            <Form onSubmit={handleUpdate}>
                 <input
-                placeholder='Name'
+                placeholder='Nome'
                 type='text'
                 onChange={(e) => {
                     setUser({ ...user, name: e.target.value });
@@ -42,9 +44,12 @@ export default function Alter(){
                 onChange={(e) => {
                     setUser({ ...user, password: e.target.value });
                 }}/>
-                <button>Alterar</button>
-            </form>
+                <div className='justify-self-end'>
+                  <Button type={'reset'} secondary={true}>Limpar</Button>
+                  <Button>Alterar</Button>
+                </div>
+            </Form>
             <ToastContainer/>
-        </main>
+        </Block>
     )
 }

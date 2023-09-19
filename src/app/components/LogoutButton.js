@@ -14,7 +14,7 @@ export default function LogoutButton() {
     }
 
     return(
-        <Button method={() => handleLogout()}>
+        <Button secondary={true} method={() => handleLogout()}>
             Logout
         </Button>
     )

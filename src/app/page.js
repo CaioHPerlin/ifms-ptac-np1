@@ -4,6 +4,9 @@ import handlerAcessUser from './functions/handlerAcess';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
+import Button from './components/Button';
+import Block from './components/Block';
+import Form from './components/Form';
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -11,7 +14,7 @@ export default function Login() {
     password: '',
   });
   const { push, refresh } = useRouter();
-  
+
   const handlerLogin = async (e) => {
     e.preventDefault();
     try {
@@ -26,9 +29,8 @@ export default function Login() {
     }
   };
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handlerLogin}>
+    <Block title={'Login'}>
+      <Form onSubmit={handlerLogin}>
         <input
           placeholder='E-mail'
           type='email'
@@ -43,9 +45,12 @@ export default function Login() {
             setUser({ ...user, password: e.target.value });
           }}
         ></input>
-        <button>Entrar</button>
-      </form>
+        <div className='justify-self-end'>
+          <Button type={'reset'} secondary={true}>Limpar</Button>
+          <Button>Entrar</Button>
+        </div>
+      </Form>
       <ToastContainer />
-    </div>
+    </Block>
   );
 }
