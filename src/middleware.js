@@ -2,14 +2,14 @@
 import { NextResponse } from 'next/server';
 import { validateToken } from './app/functions/validateToken';
 
-const restrictURLs = ['/pages/dashboard', '/pages/dashboard/register', '/pages/dashboard/alter']
-
 export const middleware = (request) => {
 
     const token = request.cookies.get('token')?.value;
     const urlLogin = new URL('/', request.url);
     const urlDashboard = new URL('/pages/dashboard', request.url);
     const isTokenValidated = validateToken(token);
+
+    const restrictURLs = ['/pages/dashboard', '/pages/dashboard/register', '/pages/dashboard/alter']
 
     if (!isTokenValidated || !token) {
         if (restrictURLs.includes(request.nextUrl.pathname)) {
@@ -24,5 +24,5 @@ export const middleware = (request) => {
 };
 
 export const config = {
-    matcher: [...restrictURLs, '/']
+    matcher: ['/', '/pages/dashboard', '/pages/dashboard/register', '/pages/dashboard/alter']
 };

@@ -16,9 +16,6 @@ export default async function Dashboard() {
                 <UserList list={users}/>
             </Suspense>
             <div className='flex justify-end mt-5'>
-                {/*
-                <Button><Link href={'/pages/dashboard/register'}>Register</Link></Button>
-    <Button><Link href={'/pages/dashboard/alter'}>Alter</Link></Button>*/}
                 <LogoutButton/>
             </div>
         </Block>
