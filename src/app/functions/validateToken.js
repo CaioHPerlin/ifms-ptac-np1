@@ -1,4 +1,4 @@
-import { decode } from "jsonwebtoken";
+import { decode } from 'jsonwebtoken';
 const validateToken = (token)=>{
     const isTokenValidate = decode(token);
     if(isTokenValidate){

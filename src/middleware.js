@@ -1,6 +1,6 @@
 'use server'
-import { NextResponse } from "next/server";
-import { validateToken } from "./app/functions/validateToken";
+import { NextResponse } from 'next/server';
+import { validateToken } from './app/functions/validateToken';
 
 const restrictURLs = ['/pages/dashboard', '/pages/dashboard/register', '/pages/dashboard/alter']
 

@@ -1,7 +1,8 @@
-import UserList from "@/app/components/UserList";
-import Link from "next/link";
-import { getUsers } from "@/app/functions/handlerAcessAPI";
-import { Suspense } from "react";
+import UserList from '@/app/components/UserList';
+import LogoutButton from '@/app/components/LogoutButton';
+import Link from 'next/link';
+import { getUsers } from '@/app/functions/handlerAcessAPI';
+import { Suspense } from 'react';
 
 export default async function Dashboard() {
    
@@ -10,11 +11,12 @@ export default async function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <Suspense fallback={<p>Carregando...</p>}>
+            <Suspense fallback={<p>Loading...</p>}>
                 <UserList list={users}/>
             </Suspense>
-            <Link href={"/pages/dashboard/register"}>Register</Link>
-            <Link href={"/pages/dashboard/alter"}>Alter</Link>
+            <Link href={'/pages/dashboard/register'}>Register</Link>
+            <Link href={'/pages/dashboard/alter'}>Alter</Link>
+            <LogoutButton/>
         </div>
     );
 };
