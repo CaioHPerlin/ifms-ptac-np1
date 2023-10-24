@@ -2,12 +2,12 @@
 import { NextResponse } from 'next/server';
 import { validateToken } from './app/functions/validateToken';
 
-export const middleware = (request) => {
+export const middleware = async (request) => {
 
     const token = request.cookies.get('token')?.value;
     const urlLogin = new URL('/', request.url);
     const urlDashboard = new URL('/pages/dashboard', request.url);
-    const isTokenValidated = validateToken(token);
+    const isTokenValidated = await validateToken(token);
 
     const restrictURLs = ['/pages/dashboard', '/pages/dashboard/register', '/pages/dashboard/alter']
 

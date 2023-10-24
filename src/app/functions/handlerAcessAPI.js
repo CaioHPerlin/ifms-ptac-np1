@@ -3,22 +3,31 @@
 const databaseUrl = 'https://ifms-ptac-2023-2.vercel.app'
 
 const getUserAuthenticated = async (user) => {
-    const response = await fetch(databaseUrl + "/user/authenticated",
-    {
-        cache:"no-cache",
-        method:"POST",
-        headers:{"Content-Type": "Application/json"},
-        body: JSON.stringify(user)
-    });
+    try{
+        const response = await fetch(databaseUrl + "/user/authenticated",
+        {
+            cache:"no-cache",
+            method:"POST",
+            headers:{"Content-Type": "Application/json"},
+            body: JSON.stringify(user)
+        });
 
-    const userAuth = await response.json();
-    return userAuth;
+        const userAuth = await response.json();
+        return userAuth;
+    }catch {
+        return {};
+    }
 }
 
 const getUsers = async () => {
-    const response = await fetch(databaseUrl + "/users", { cache:"no-cache" });
-    const users = await response.json();
-    return users;
+    try{
+        const response = await fetch(databaseUrl + "/users", { next: { revalidate: 10 } });
+        const users = await response.json();
+        
+        return users;
+    }catch{
+        return [];
+    }
 }
 
 export { getUsers, getUserAuthenticated };
