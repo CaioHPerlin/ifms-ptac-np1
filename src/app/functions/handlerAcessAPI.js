@@ -19,9 +19,24 @@ const getUserAuthenticated = async (user) => {
     }
 }
 
+const createUser = async (user) => {
+    try{
+        const response = await fetch(databaseUrl + "/user", {
+            method: "POST",
+            headers: {"Content-Type": "Application/json"},
+            body: JSON.stringify(user)
+        });
+
+        const newUser = await response.json();
+        return newUser;
+    }catch {
+        return {};
+    }
+}
+
 const getUsers = async () => {
     try{
-        const response = await fetch(databaseUrl + "/users", { next: { revalidate: 10 } });
+        const response = await fetch(databaseUrl + "/users", { next: { revalidate: 5 } });
         const users = await response.json();
         
         return users;
@@ -30,4 +45,4 @@ const getUsers = async () => {
     }
 }
 
-export { getUsers, getUserAuthenticated };
+export { getUsers, getUserAuthenticated, createUser };

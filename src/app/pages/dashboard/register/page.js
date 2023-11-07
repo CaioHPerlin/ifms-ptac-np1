@@ -2,6 +2,8 @@
 import Block from '@/app/components/Block';
 import Button from '@/app/components/Button';
 import Form from '@/app/components/Form';
+import { createUser } from '@/app/functions/handlerAcessAPI';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,15 +14,20 @@ export default function Register(){
         email: '',
         password: ''
     });
+    const { push } = useRouter();
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         if(user.name == '' || user.email == '' || user.password == ''){
-            console.log('a')
             return toast.error('Há campos não preenchidos!');
         }
 
-        toast.success('Usuário registrado com sucesso!')
+        try{
+            await createUser(user)
+            return push('/pages/dashboard')
+        } catch {
+            return toast.error('Erro interno.')
+        }
     }
 
     return (
