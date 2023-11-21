@@ -2,25 +2,34 @@
 import Block from '@/app/components/Block';
 import Button from '@/app/components/Button';
 import Form from '@/app/components/Form';
-import { useState } from 'react'
+import { getUser, updateUser } from '@/app/functions/handlerAcessAPI';
+import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Alter(){
+export default function Alter({ params }){
     const [user, setUser] = useState({
         name: '',
         email: '',
         password: ''
     });
 
-    const handleUpdate = (e) => {
+    useEffect(() => {
+        const findUser = async () => {
+            const userDb = await getUser(params.id);
+            setUser({name: userDb.name, email: userDb.email, password: userDb.password});
+        }
+        findUser();
+    }, [])
+
+    const handleUpdate = async (e) => {
         e.preventDefault();
         if(user.name == '' || user.email == '' || user.password == ''){
-            console.log('a')
             return toast.error('Há campos não preenchidos!');
         }
-
+        await updateUser(user, params.id)
         toast.success('Usuário atualizado!')
+        
     }
 
     return (
